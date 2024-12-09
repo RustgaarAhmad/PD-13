@@ -3,7 +3,6 @@
 #include <string>
 using namespace std;
 
-// Function declarations
 void saveData(int age, string name);
 void generateBirthdayCard();
 
@@ -11,8 +10,6 @@ int main()
 {
     string userName;
     int userAge;
-
-    // Taking user input
     cout << "Please enter your name: ";
     cin >> userName;
     cout << "Please enter your age: ";
@@ -26,7 +23,6 @@ int main()
 
 void saveData(int age, string name)
 {
-    // Open file in write mode and store data
     ofstream file("Output1.txt");
     if (file.is_open())
     {
@@ -43,8 +39,6 @@ void generateBirthdayCard()
 {
     ifstream file("Output1.txt");
     string content;
-
-    // Read data from the file
     if (file.is_open())
     {
         getline(file, content);
@@ -55,14 +49,11 @@ void generateBirthdayCard()
         cout << "Error opening file for reading!" << endl;
         return;
     }
-
-    // Extract name and age from file data
     size_t delimiterPos = content.find(',');
     string name = content.substr(0, delimiterPos);
     string ageStr = content.substr(delimiterPos + 1);
     int age = stoi(ageStr);
 
-    // Generate the birthday card based on age
     ofstream outputFile("Output2.txt");
     if (age % 2 == 0)
     {
